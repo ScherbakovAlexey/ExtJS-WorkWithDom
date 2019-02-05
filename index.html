@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>Hello Ext</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../extjs/build/classic/theme-gray/resources/theme-gray-all.css"
+    />
+    <script type="text/javascript" src="../extjs/build/ext-all.js"></script>
+    <script
+      type="text/javascript"
+      src="../extjs/build/classic/theme-gray/theme-gray.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../extjs/build/classic/locale/locale-ru.js"
+    ></script>
+
+    <script>
+      Ext.onReady(function() {
+        var elements = Ext.select("div.t2");
+        //elements.hide();
+        console.log(elements);
+        var elements1 = Ext.select("div").item(1);
+        console.log(elements1.dom.innerHTML);
+        var elements2 = elements1.next();
+        console.log(elements2.dom.innerHTML);
+        var elements3 = Ext.get("content");
+        var el = elements3.child("div#text1");
+        el.setStyle("color", "red");
+        elements3.setStyle({
+          "font-family": "Verdana",
+          "font-size": "13px",
+          "background-color": "silver"
+        });
+        el.update("<b>TEXT1</b>");
+        var body = Ext.get("content");
+        var newElement = {
+          tag: "h2",
+          html: "header"
+        };
+        var createdElement = Ext.DomHelper.append(body, newElement);
+        var newElement1 = {
+          tag: "ol",
+          cls: "listClass",
+          children: [
+            {
+              tag: "li",
+              html: "one"
+            },
+            {
+              tag: "li",
+              html: "two"
+            }
+          ]
+        };
+        var createdElement1 = Ext.DomHelper.append(body, newElement1);
+        Ext.core.DomHelper.append(body, "<h2>header2</h2>");
+        Ext.DomHelper.insertAfter(body.first(), "<p>after</p>");
+        Ext.DomHelper.insertBefore(body.first(), "<p>before</p>");
+
+        var template = Ext.DomHelper.createTemplate({
+          tag: "h2",
+          html: "{header}"
+        });
+        template.append(body, { header: "template header" });
+        var overwrited_el = Ext.get("text2");
+        var newElement2 = Ext.DomHelper.overwrite(
+          overwrited_el,
+          "instead text3"
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="text1">Text1</div>
+      <div class="t2">Text2</div>
+      <div id="text2">Text3</div>
+      <div class="t2">Text4</div>
+    </div>
+  </body>
+</html>
