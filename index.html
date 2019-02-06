@@ -68,7 +68,15 @@
         var overwrited_el = Ext.get("text2");
         var newElement2 = Ext.DomHelper.overwrite(
           overwrited_el,
-          "instead text3"
+          "instead text"
+        );
+        var element = Ext.get("content");
+        element.on(
+          "click",
+          function(e, target, options) {
+            alert("elem was clicked");
+          },
+          this
         );
       });
     </script>
